@@ -6,9 +6,10 @@ jobs:
   Build:
     runs-on: ubuntu-20.04
     steps:
+      - name: Requirements
+        run: sudo apt install libssl-dev libarchive-dev libarchive-tools wget -y 
       - name: Do things
         run: |
-          sudo apt install libssl-dev libarchive-dev libarchive-tools wget -y
           wget https://sources.archlinux.org/other/pacman/pacman-5.2.2.tar.gz
           tar -xvf pacman-*
           rm pacman-5.2.2.tar.gz
@@ -16,7 +17,7 @@ jobs:
           ./configure
           make -j $(nproc)
           sudo make install
-          sudo find / -name "libalpm"
+          sudo find / -name "*libalpm*"
 
 #           sudo pacman -Syu neofetch
 #           neofetch
