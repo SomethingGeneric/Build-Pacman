@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Requirements
-        run: sudo apt install libssl-dev libarchive-dev libarchive-tools wget -y 
+        run: sudo apt install libssl-dev libarchive-dev libarchive-tools wget curl -y 
       - name: Do things
         run: |
           wget https://sources.archlinux.org/other/pacman/pacman-5.2.2.tar.gz
           tar -xvf pacman-*
           rm pacman-5.2.2.tar.gz
           cd pacman-5.2.2
-          ./configure --prefix=/usr
+          ./configure --prefix=/usr --sysconfdir=/etc
           make -j $(nproc)
           sudo make install
       - name: Configure pacman
@@ -24,7 +24,6 @@ jobs:
           wget https://raw.githubusercontent.com/SomethingGeneric/Build-Pacman/main/mirrorlist && sudo mv mirrorlist /etc/pacman.d/. -v
       - name: Init PacMan
         run: |
-          sudo pacman -S archlinux-keyring
           sudo pacman-key --init
           sudo pacman-key --populate archlinux
       - name: Test
