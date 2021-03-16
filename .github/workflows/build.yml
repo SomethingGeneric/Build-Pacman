@@ -24,9 +24,9 @@ jobs:
           wget https://raw.githubusercontent.com/SomethingGeneric/Build-Pacman/main/mirrorlist && sudo mv mirrorlist /etc/pacman.d/. -v
       - name: Init PacMan
         run: |
+          sudo pacman -S archlinux-keyring
           sudo pacman-key --init
           sudo pacman-key --populate archlinux
-          sudo pacman -S archlinux-keyring
       - name: Test
         run: |
           sudo pacman -Syu neofetch
