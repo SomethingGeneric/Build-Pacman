@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push: master
+
+jobs:
+  Build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Do things
+      run: |
+      sudo apt update && sudo apt full-upgrade -y
+      sudo apt install libssl-dev libarchive-dev libarchive-tools wget -y
+      wget https://sources.archlinux.org/other/pacman/pacman-5.2.2.tar.gz
+      tar -xvf pacman-*
+      cd pacman-* && ./configure && make && sudo make install
+      sudo pacman -Syu
