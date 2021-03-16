@@ -26,6 +26,7 @@ jobs:
         run: |
           sudo pacman-key --init
           sudo pacman-key --populate archlinux
+          sudo pacman -S archlinux-keyring
       - name: Test
         run: |
           sudo pacman -Syu neofetch
