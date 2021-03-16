@@ -11,7 +11,7 @@ jobs:
           sudo apt install libssl-dev libarchive-dev libarchive-tools wget -y
           wget https://sources.archlinux.org/other/pacman/pacman-5.2.2.tar.gz
           tar -xvf pacman-*
-          rrm pacman-5.2.2.tar.gz
+          rm pacman-5.2.2.tar.gz
           cd pacman-5.2.2
           ./configure
           make -j $(nproc)
