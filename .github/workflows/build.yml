@@ -17,6 +17,8 @@ jobs:
           ./configure --prefix=/usr
           make -j $(nproc)
           sudo make install
+      - name: Configure pacman
+        run: wget https://raw.githubusercontent.com/SomethingGeneric/Build-Pacman/main/pacman.conf && mv pacman.conf /etc/. -v
       - name: Test
         run: |
           sudo pacman -Syu neofetch
