@@ -14,10 +14,10 @@ jobs:
           tar -xvf pacman-*
           rm pacman-5.2.2.tar.gz
           cd pacman-5.2.2
-          ./configure
+          ./configure --prefix=/usr
           make -j $(nproc)
           sudo make install
-          sudo find / -name "*libalpm*"
-
-#           sudo pacman -Syu neofetch
-#           neofetch
+      - name: Test
+        run: |
+          sudo pacman -Syu neofetch
+          neofetch
