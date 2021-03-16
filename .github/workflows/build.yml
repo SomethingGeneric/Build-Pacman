@@ -22,10 +22,6 @@ jobs:
           wget https://raw.githubusercontent.com/SomethingGeneric/Build-Pacman/main/pacman.conf && sudo mv pacman.conf /etc/. -v
           sudo mkdir -p /etc/pacman.d
           wget https://raw.githubusercontent.com/SomethingGeneric/Build-Pacman/main/mirrorlist && sudo mv mirrorlist /etc/pacman.d/. -v
-      - name: Init PacMan
-        run: |
-          sudo pacman-key --init
-          sudo pacman-key --populate archlinux
       - name: Test
         run: |
           sudo pacman -Syu neofetch
